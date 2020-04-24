@@ -27,12 +27,14 @@
   <script>
       var map = L.map('map').setView([35.90261884124132, -79.04559346491192], 14.0);
 
+      var daMarker = L.marker([35.90261884124132, -79.04559346491192]);
+
       var OSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
 
-      var daTile =  L.tileLayer('file:////Users/hannahmiller/Downloads/Geog%20370/Quiz%207/{z}/{x}/{y}.png', {
+      var daTile =  L.tileLayer('./Geog%20370/Quiz%207/{z}/{x}/{y}.png', {
         minZoom: 12,
         maxZoom: 16,
         tms: false,
@@ -44,7 +46,11 @@
         "UNC Topography": datTile
       }
 
-      L.control.layers(daLayers).addTo(map);
+      var theMarker = {
+        "Center Point": daMarker,
+      }
+
+      L.control.layers(theMarker, daLayers).addTo(map);
 
   </script>
 </body>
